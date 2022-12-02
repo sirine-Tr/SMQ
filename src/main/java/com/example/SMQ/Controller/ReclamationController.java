@@ -8,9 +8,19 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
+
+import static java.nio.file.Paths.get;
 
 @CrossOrigin
 @RequestMapping(path = "api/reclamation")
@@ -20,6 +30,7 @@ public class ReclamationController {
     @Autowired
     private final ReclamationService reclamationService;
     private final ReclamationRepository reclamationRepository;
+    public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads/";
     //work
     @GetMapping("/reclamations")
     public ResponseEntity<List<ReclamationDto>> getAllReclamations(@RequestParam Integer pageNumber, @RequestParam Integer pageSize) {
@@ -67,5 +78,21 @@ public class ReclamationController {
     public void deleteReclamation(@PathVariable(name = "idReclamation") Integer idReclamation) {
         String message = reclamationService.deleteReclamation(idReclamation);
 
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity uploadToLocalFileSystem(@RequestParam("file") MultipartFile file) {
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        Path path = get(DIRECTORY, fileName).toAbsolutePath().normalize();
+        try {
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/files/download/")
+                .path(fileName)
+                .toUriString();
+        return ResponseEntity.ok(fileDownloadUri);
     }
 }
