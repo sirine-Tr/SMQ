@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -18,8 +19,8 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name="t_Causes")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","causes"})
-public class Causes {
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","causes"})
+public class Causes implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idCauses;

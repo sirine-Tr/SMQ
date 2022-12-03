@@ -3,6 +3,7 @@ package com.example.SMQ.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @Table(name="t_ActionRisque")
-public class ActionRisque {
+public class ActionRisque implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idActionRisque;

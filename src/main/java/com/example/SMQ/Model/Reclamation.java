@@ -5,21 +5,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-
+// @NoArgsConstructor generates a constructor with no parameter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @Getter
 @Setter
+/* Génère @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode */
 @Data
+//create instances of our class.
 @Builder
 @Entity
 @Table(name="t_Reclamation")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","causes","consequances"})
-public class Reclamation {
+
+public class Reclamation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idReclamation;

@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
+
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
@@ -14,10 +16,8 @@ import java.util.Date;
 @Data
 @Builder
 @Entity
-
 @Table(name="t_Consequances")
-
-public class Consequances {
+public class Consequances implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idConsequances;

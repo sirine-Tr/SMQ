@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 @NoArgsConstructor
@@ -15,7 +16,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name="t_Risque")
-public class Risque {
+public class Risque implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idRisque;
