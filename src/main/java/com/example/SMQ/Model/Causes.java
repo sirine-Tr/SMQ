@@ -19,7 +19,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name="t_Causes")
-//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","causes"})
+
 public class Causes implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

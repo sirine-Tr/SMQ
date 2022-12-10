@@ -39,7 +39,7 @@ public class ReclamationController {
     }
 //work
     @GetMapping(path = "/reclamation/{idReclamation}", produces = "application/json")
-    public ResponseEntity<Reclamation> getReclamation(@PathVariable(value = "idReclamation") Integer idReclamation) {
+    public ResponseEntity<Reclamation> getReclamationById(@PathVariable(value = "idReclamation") Integer idReclamation) {
         return new ResponseEntity<>(reclamationService.getReclamationById(idReclamation), HttpStatus.OK);
     }
 // work
@@ -80,19 +80,5 @@ public class ReclamationController {
 
     }
 
-    @PostMapping("/upload")
-    public ResponseEntity uploadToLocalFileSystem(@RequestParam("file") MultipartFile file) {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        Path path = get(DIRECTORY, fileName).toAbsolutePath().normalize();
-        try {
-            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/files/download/")
-                .path(fileName)
-                .toUriString();
-        return ResponseEntity.ok(fileDownloadUri);
-    }
+
 }

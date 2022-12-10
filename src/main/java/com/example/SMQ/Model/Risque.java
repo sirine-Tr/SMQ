@@ -31,4 +31,8 @@ public class Risque implements Serializable {
     @OneToMany(mappedBy = "risque")
     @JsonIgnore
     private List<ActionRisque> actionRisque;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPieceJointe", nullable = true)
+    private PieceJointe pieceJointeRisque;
 }
