@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 // @NoArgsConstructor generates a constructor with no parameter
 @NoArgsConstructor
+//let lombok generate implementations of the equals(Object other) and hashCode()
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @Getter
