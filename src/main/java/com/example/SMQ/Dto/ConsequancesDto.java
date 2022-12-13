@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ConsequancesDto {
     private int idConsequances;
-    private LocalDateTime dateCreation;
+    private String dateCreation;
     private String descriptionConsequances;
     private ReclamationDto reclamationDto;
 

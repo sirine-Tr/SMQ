@@ -19,6 +19,6 @@ public class ActionRisqueDto {
     private String libelle;
     private String responsable;
     private String cin;
-    private LocalDateTime dateDecision;
+    private String dateDecision;
     private Risque risque;
 }

@@ -20,7 +20,7 @@ public class Risque implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idRisque;
-    private LocalDateTime dateDetection;
+    private String dateDetection;
     private String type;
     private String description;
     private String lieuOuPromotion;

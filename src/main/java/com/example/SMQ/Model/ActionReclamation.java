@@ -21,7 +21,7 @@ public class ActionReclamation implements Serializable {
     private String libelle;
     private String responsable;
     private String cin;
-    private LocalDateTime dateDecision;
+    private String dateDecision;
     @ManyToOne(cascade = CascadeType.MERGE )
     @JoinColumn(name="idCauses")
     private Causes causes;

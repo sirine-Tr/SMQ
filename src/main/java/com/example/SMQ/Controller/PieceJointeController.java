@@ -1,6 +1,9 @@
 package com.example.SMQ.Controller;
 
+import com.example.SMQ.Model.PieceJointe;
+import com.example.SMQ.Services.PieceJointeService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +34,8 @@ import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 @CrossOrigin
 public class PieceJointeController {
     public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads/";
+    @Autowired
+    private final PieceJointeService pieceJointeService;
     @PostMapping("/upload")
     public ResponseEntity<List<String>> uploadFiles(@RequestParam("files")List<MultipartFile> multipartFiles) throws IOException {
         List<String> filenames = new ArrayList<>();
@@ -39,6 +44,10 @@ public class PieceJointeController {
             Path fileStorage = get(DIRECTORY, filename).toAbsolutePath().normalize();
             copy(file.getInputStream(), fileStorage, REPLACE_EXISTING);
             filenames.add(filename);
+            PieceJointe p=new PieceJointe();
+            p.setName(filename);
+            PieceJointe p1=pieceJointeService.addPieceJointe(p);
+
         }
         return ResponseEntity.ok().body(filenames);
     }

@@ -21,7 +21,7 @@ public class Consequances implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idConsequances;
-    private LocalDateTime dateCreation;
+    private String dateCreation;
     private String descriptionConsequances;
     @ManyToOne(cascade = CascadeType.MERGE )
     @JoinColumn(name="idReclamation")
