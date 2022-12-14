@@ -60,6 +60,7 @@ public class PieceJointeController {
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(Files.probeContentType(filePath)))
                 .headers(httpHeaders).body(resource);
     }
+<<<<<<< HEAD
 
     @PostMapping("/pieceJointe")
     public ResponseEntity<PieceJointe>addBill(@RequestBody PieceJointe pj) {
@@ -67,3 +68,6 @@ public class PieceJointeController {
         return new ResponseEntity<>(bl, HttpStatus.CREATED);
     }
 }
+=======
+}
+>>>>>>> 8181c61da3ef578c55d897bf10e6bc39b869f867

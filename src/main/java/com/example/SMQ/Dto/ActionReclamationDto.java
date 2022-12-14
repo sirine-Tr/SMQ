@@ -14,6 +14,6 @@ public class ActionReclamationDto {
     private String libelle;
     private String responsable;
     private String cin;
-    private LocalDateTime dateDecision;
+    private String dateDecision;
     private CausesDto causesDto;
 }

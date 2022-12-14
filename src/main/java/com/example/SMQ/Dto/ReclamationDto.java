@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ReclamationDto {
     private int idReclamation;
-    private LocalDateTime dateDetection;
+    private String dateDetection;
     private String type;
     private String gravite;
     private String description;

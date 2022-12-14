@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RisqueDto {
     private int idRisque;
-    private LocalDateTime dateDetection;
+    private String dateDetection;
     private String type;
     private String description;
     private String lieuOuPromotion;

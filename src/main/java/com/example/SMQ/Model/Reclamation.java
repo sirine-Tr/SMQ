@@ -27,7 +27,7 @@ public class Reclamation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idReclamation;
-    private LocalDateTime dateDetection;
+    private String dateDetection;
     private String type;
     private String gravite;
     private String description;

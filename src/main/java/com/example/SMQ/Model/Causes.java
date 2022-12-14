@@ -24,7 +24,7 @@ public class Causes implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idCauses;
-    private LocalDateTime dateCreation;
+    private String dateCreation;
     private String descriptionCause;
     private String nature;
 

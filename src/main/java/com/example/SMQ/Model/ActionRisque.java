@@ -21,7 +21,7 @@ public class ActionRisque implements Serializable {
     private String libelle;
     private String responsable;
     private String cin;
-    private LocalDateTime dateDecision;
+    private String dateDecision;
 
     @ManyToOne(cascade = CascadeType.MERGE )
     @JoinColumn(name="idRisque")

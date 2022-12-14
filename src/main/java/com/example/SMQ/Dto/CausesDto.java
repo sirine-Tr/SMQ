@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CausesDto {
     private int idCauses;
-    private LocalDateTime dateCreation;
+    private String dateCreation;
     private String descriptionCause;
     private String nature;
     private ReclamationDto reclamationDto;
