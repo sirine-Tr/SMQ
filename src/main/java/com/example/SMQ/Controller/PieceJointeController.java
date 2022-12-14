@@ -60,14 +60,18 @@ public class PieceJointeController {
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(Files.probeContentType(filePath)))
                 .headers(httpHeaders).body(resource);
     }
-<<<<<<< HEAD
+
 
     @PostMapping("/pieceJointe")
-    public ResponseEntity<PieceJointe>addBill(@RequestBody PieceJointe pj) {
+    public ResponseEntity<PieceJointe>addPieceJointe(@RequestBody PieceJointe pj) {
         PieceJointe bl = pieceJointeService.addPieceJointe(pj);
         return new ResponseEntity<>(bl, HttpStatus.CREATED);
     }
+
+    @GetMapping(path = "/{name}", produces = "application/json")
+    public ResponseEntity<PieceJointe> getByName (@PathVariable(value = "name") String name) {
+
+        return new ResponseEntity<>(pieceJointeService.findByName(name), HttpStatus.OK);
+    }
 }
-=======
-}
->>>>>>> 8181c61da3ef578c55d897bf10e6bc39b869f867
+
