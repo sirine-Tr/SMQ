@@ -19,6 +19,9 @@ public class PieceJointe implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idPieceJointe ;
     private String name;
+    @Lob
+    private byte[] file;
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pieceJointe")
     private Reclamation reclamation;
 

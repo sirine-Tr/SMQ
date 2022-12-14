@@ -1,9 +1,12 @@
 package com.example.SMQ.Controller;
 
+import com.example.SMQ.Model.PieceJointe;
+import com.example.SMQ.Services.PieceJointeService;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -30,6 +33,7 @@ import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 @AllArgsConstructor
 @CrossOrigin
 public class PieceJointeController {
+    private final PieceJointeService pieceJointeService;
     public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads/";
     @PostMapping("/upload")
     public ResponseEntity<List<String>> uploadFiles(@RequestParam("files")List<MultipartFile> multipartFiles) throws IOException {
@@ -55,5 +59,11 @@ public class PieceJointeController {
         httpHeaders.add(CONTENT_DISPOSITION, "attachment;File-Name=" + resource.getFilename());
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(Files.probeContentType(filePath)))
                 .headers(httpHeaders).body(resource);
+    }
+
+    @PostMapping("/pieceJointe")
+    public ResponseEntity<PieceJointe>addBill(@RequestBody PieceJointe pj) {
+        PieceJointe bl = pieceJointeService.addPieceJointe(pj);
+        return new ResponseEntity<>(bl, HttpStatus.CREATED);
     }
 }

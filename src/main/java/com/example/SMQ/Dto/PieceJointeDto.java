@@ -12,5 +12,5 @@ public class PieceJointeDto {
     private int idPieceJointe ;
     private String name;
     private String type;
-    private byte[] data;
+    private byte[] file;
 }
