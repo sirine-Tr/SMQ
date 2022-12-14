@@ -22,8 +22,8 @@ public class PieceJointe implements Serializable {
     @Lob
     private byte[] file;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pieceJointe")
-    private Reclamation reclamation;
+   /* @OneToOne(cascade = CascadeType.ALL, mappedBy = "pieceJointe")
+    private Reclamation reclamation;*/
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pieceJointeRisque")
     private Risque risque;

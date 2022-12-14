@@ -34,9 +34,9 @@ public class Reclamation implements Serializable {
     private String lieuOuPromotion;
     private String acteur;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    /*@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPieceJointe", nullable = true)
-    private PieceJointe pieceJointe;
+    private PieceJointe pieceJointe;*/
 
     @OneToMany(mappedBy = "reclamation")
     @JsonIgnore
